@@ -22,6 +22,8 @@ class ResultService
 
         result.save!
 
+        SlackNotifier.new.send("#{result.winners.first.name} defeated #{result.losers.first.name}")
+
         OpenStruct.new(
           success?: true,
           result: result

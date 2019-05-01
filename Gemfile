@@ -15,6 +15,7 @@ gem 'chartkick'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # This is necessary for running on linux
 gem 'therubyracer', platforms: :ruby
+gem 'httparty'
 
 gem 'dynamic_form'
 gem 'elo'
