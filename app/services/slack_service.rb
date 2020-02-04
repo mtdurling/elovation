@@ -1,7 +1,7 @@
 class SlackNotifier
-  def initialize(icon_emoji = ":table_tennis_paddle_and_ball:", webhook)
+  def initialize(webhook)
     @webhook_url = webhook #ENV["SLACK_WEBHOOK_URL"]
-    @icon_emoji = icon_emoji
+    @icon_emoji = ":table_tennis_paddle_and_ball:"
   end
 
   def send(text)
