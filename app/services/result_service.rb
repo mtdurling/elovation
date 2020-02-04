@@ -1,3 +1,5 @@
+SQUASH_ID = 2
+
 class ResultService
   def self.create(game, params)
     result = game.results.build
@@ -22,7 +24,9 @@ class ResultService
 
         result.save!
 
-        SlackNotifier.new.send("#{result.winners.first.name} defeated #{result.losers.first.name}")
+        webhook = game.id === SQUASH_ID ? ENV['SLACK_SQUASH_WEBHOOK'] : ENV['SLACK_TT_WEBHOOK']
+
+        SlackNotifier.new(webhook).send("#{result.winners.first.name} defeated #{result.losers.first.name}")
 
         OpenStruct.new(
           success?: true,
