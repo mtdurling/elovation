@@ -24,7 +24,7 @@ class ResultService
 
         result.save!
 
-        webhook = game.id === SQUASH_ID ? ENV['SLACK_SQUASH_WEBHOOK'] : ENV['SLACK_TT_WEBHOOK']
+        webhook = game.id == SQUASH_ID ? ENV['SLACK_SQUASH_WEBHOOK'] : ENV['SLACK_TT_WEBHOOK']
 
         SlackNotifier.new(webhook).send("#{result.winners.first.name} defeated #{result.losers.first.name}")
 
